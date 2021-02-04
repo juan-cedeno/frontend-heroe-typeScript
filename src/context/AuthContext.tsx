@@ -1,4 +1,4 @@
-import { createContext, useCallback, useState } from "react";
+import { createContext, ReactNode, useCallback, useState} from "react";
 import { notificationMessage } from "../helpers/notificationMessage";
 import { User } from "../interface/User";
 import { loginUser, registerUser, renewToken } from "../services/userService";
@@ -7,6 +7,10 @@ interface IinitialState {
   user?: User;
   logged: boolean;
   checking: boolean;
+}
+
+interface IChildren {
+  children : ReactNode
 }
 
 interface IContext {
@@ -20,14 +24,18 @@ interface IContext {
 
 export const AuthContext = createContext<IContext>({} as IContext);
 
-export const AuthContextProvider = ({ children }: any) => {
+export const AuthContextProvider = ({ children }: IChildren) => {
+
   const [user, setUser] = useState<IinitialState>();
+
   const [loading, setLoading] = useState<boolean>(false)
 
   const login = async (email: string, password: string) => {
+
     setLoading(true)
     const user = await loginUser(email, password);
     setLoading(false)
+
     if (user?.message) {
       setLoading(false)
       return notificationMessage("Error", user.message, "danger");
@@ -37,9 +45,10 @@ export const AuthContextProvider = ({ children }: any) => {
       localStorage.setItem("TOKEN", user.token);
 
       setUser({
-        user,
-        logged: true,
-        checking: false,
+      user,
+      logged: true,
+      checking: false,
+
       });
     }
   };
@@ -86,13 +95,11 @@ export const AuthContextProvider = ({ children }: any) => {
 
     }else {
          setUser({
-              checking :false,
-              logged : false
+          checking :false,
+          logged : false
          })
     }
-
   }, []);
-
 
   const logOut = () => {
     localStorage.removeItem('TOKEN')
@@ -107,10 +114,10 @@ export const AuthContextProvider = ({ children }: any) => {
       <AuthContext.Provider
         value={{
           user,
+          loading,
           login,
           register,
           verifiToken,
-          loading,
           logOut
         }}
       >
