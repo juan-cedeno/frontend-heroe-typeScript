@@ -1,0 +1,12 @@
+{
+     "email" : "Email",
+     "password" : "Password",
+     "login": "login",
+     "signIn" : "sign in",
+     "SignUpNow" : "Sign up now",
+     "notAmember" : "Not a member?",
+     "name" : "Name",
+     "signUp" : "sign up",
+     "createAccount" : "create account",
+     "AlreadyAmember" :"Already a member"
+}
