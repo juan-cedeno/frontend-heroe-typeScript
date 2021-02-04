@@ -1,0 +1,40 @@
+.cont-header {
+     display: flex;
+     padding: 22px 50px;
+     justify-content: space-around;
+}
+
+.social i {
+     font-size: 29px;
+     margin-right: 10px;
+     color: rgb(148, 148, 148);
+}
+
+.social i:hover {
+     color: #303030;
+}
+
+.menu a {
+     margin-right: 20px;
+     text-transform: capitalize;
+     text-decoration: none;
+     color: #333;
+     font-size: 19px;
+     padding: 10px 15px;
+}
+
+.menu a:hover {
+     background-color: rgb(156, 156, 156);
+     border-radius: 4px;
+     color: #ffffff;
+}
+.btn-black {
+     padding: 8px 7px;
+    width: 90px;
+    background-color: #000000;
+    border: 1px solid #000000;
+    color: #fff;
+    border-radius: 3px;
+    text-transform: capitalize;
+    cursor: pointer;
+}

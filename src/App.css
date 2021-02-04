@@ -11,6 +11,10 @@ body {
   background-color: #E7EEEC !important;
   border: 1px solid #E7EEEC !important;
   cursor: no-drop !important;
-  color: #313131 !important;
+  color: gray !important;
   font-weight: bold !important;
+}
+.container {
+  background-color: #F2F6FF;
+  /* height: 100vh; */
 }

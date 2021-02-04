@@ -1,8 +1,9 @@
+import { Heroe } from "../components/Heroe"
 
 export const MarvelPage = () => {
      return (
           <div>
-               malver
+              <Heroe/>
           </div>
      )
 }

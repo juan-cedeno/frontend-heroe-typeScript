@@ -14,7 +14,8 @@ interface IContext {
   login: (email: string, passwrod: string) => void;
   register: (name: string, email: string, password: string) => void;
   verifiToken : () => void,
-  loading : boolean
+  loading : boolean,
+  logOut : () => void
 }
 
 export const AuthContext = createContext<IContext>({} as IContext);
@@ -92,6 +93,15 @@ export const AuthContextProvider = ({ children }: any) => {
 
   }, []);
 
+
+  const logOut = () => {
+    localStorage.removeItem('TOKEN')
+    setUser({
+      logged : false,
+      checking : false
+    })
+  }
+
   return (
     <div>
       <AuthContext.Provider
@@ -100,7 +110,8 @@ export const AuthContextProvider = ({ children }: any) => {
           login,
           register,
           verifiToken,
-          loading
+          loading,
+          logOut
         }}
       >
         {children}

@@ -16,8 +16,8 @@ export const LoginPage = () => {
   const { t } = useTranslation();
 
   const [userValue, setUserValue] = useState<IUser>({
-    email: "",
-    password: "",
+    email: "test@test.com",
+    password: "123456",
   });
 
   const { login, loading } = useContext(AuthContext);

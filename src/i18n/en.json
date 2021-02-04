@@ -8,5 +8,12 @@
      "name" : "Name",
      "signUp" : "sign up",
      "createAccount" : "create account",
-     "AlreadyAmember" :"Already a member"
+     "AlreadyAmember" :"Already a member",
+     "logOut" : "log out",
+     "alterEgo": "alter ego:",
+     "character": "character:",
+     "firstAppearance": "first appearance:",
+     "publisher": "publisher:",
+     "superHero": "super hero:",
+     "more" : "more"
 }
