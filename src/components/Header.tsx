@@ -1,7 +1,7 @@
-import { useContext } from "react"
+
 import { useTranslation } from "react-i18next"
 import { Link } from "react-router-dom"
-import { AuthContext } from "../context/AuthContext"
+
 
 import '../css/header.css'
 
@@ -9,11 +9,6 @@ export const Header = () => {
 
      const {t} = useTranslation()
 
-     const {logOut} = useContext(AuthContext)
-
-     const handlenLogOut = () => {
-          logOut()
-     }
      return (
           <div className = 'cont-header'>
                <div className = 'social'>
@@ -30,7 +25,6 @@ export const Header = () => {
                     <Link to = '/dc'>Dc</Link>
                </div>
                     <button 
-                    onClick = {handlenLogOut}
                     className = 'btn-black'
                     >
                     {t('logOut')}</button>

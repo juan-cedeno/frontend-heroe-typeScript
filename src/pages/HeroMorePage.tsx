@@ -1,6 +1,5 @@
 
-
-export const PublicRouter = () => {
+export const HeroMorePage = () => {
      return (
           <div>
                

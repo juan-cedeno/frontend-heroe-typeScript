@@ -39,7 +39,7 @@ export const DcList = ({ items }: IProps) => {
             <p>
               <span>{t("superHero")}</span> {items.superhero}
             </p>
-            <Link to="/">{t("more")}</Link>
+            <Link to = {`/more/${items._id}`}>{t('more')}</Link>
           </div>
         </div>
       )}

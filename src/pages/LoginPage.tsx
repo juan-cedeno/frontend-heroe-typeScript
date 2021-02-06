@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import user_img from "../assets/user_img.jpg";
 import { AuthContext } from "../context/AuthContext";
 
+
 import "../css/user.css";
 
 export interface IUser {
@@ -14,18 +15,17 @@ export interface IUser {
 
 export const LoginPage = () => {
   const { t } = useTranslation();
-
+  
   const [userValue, setUserValue] = useState<IUser>({
     email: "test@test.com",
     password: "123456",
   });
 
-  const { login, loading } = useContext(AuthContext);
+  const {loading , login} = useContext(AuthContext)
 
   const { email, password } = userValue;
 
-  const disableBtn = (email.length < 0 || password.length < 6) ?  true :  false
-
+  const disableBtn = (email.length <= 0 || password.length < 6) ?  true :  false
 
   const handlenChangeUserValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserValue({
@@ -33,13 +33,13 @@ export const LoginPage = () => {
       [e.target.name]: e.target.value,
     });
   };
-
+  
   const handlenSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    login(email , password)
 
-    login(email, password);
   };
-
+  
   return (
     <div className="cont-user">
 
