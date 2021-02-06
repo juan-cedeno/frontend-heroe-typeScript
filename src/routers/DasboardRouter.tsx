@@ -3,6 +3,8 @@ import { Header } from "../components/Header"
 import { DcPage } from "../pages/DcPage"
 import { HeroMorePage } from "../pages/HeroMorePage"
 import { MarvelPage } from "../pages/MarvelPage"
+import { SearchPage } from "../pages/SearchPage"
+import { PrivateRouter } from "./PrivateRouter"
 
 
 export const DasboardRouter = () => {
@@ -12,7 +14,8 @@ export const DasboardRouter = () => {
                <Switch>
                     <Route exact path = '/marvel' component = {MarvelPage}></Route>
                     <Route exact path = '/dc' component = {DcPage}></Route>
-                    <Route exact path = '/more/:id' component = {HeroMorePage}></Route>
+                    <PrivateRouter exact path = '/more/:id' component = {HeroMorePage}></PrivateRouter>
+                    <Route exact path = '/search' component = {SearchPage}></Route>
                     <Redirect to = '/marvel'/>
                </Switch>
           </div>

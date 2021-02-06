@@ -1,9 +1,8 @@
 import { useContext, useEffect } from "react";
-import { BrowserRouter as Router, Redirect, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { AuthRouter } from "./AuthRouter";
 import { DasboardRouter } from "./DasboardRouter";
-import { PrivateRouter } from "./PrivateRouter";
 import { PublicRouter } from "./PublicRouter";
 
 
@@ -22,7 +21,7 @@ export const AppRouter = () => {
     <Router>
       <Switch>
         <PublicRouter path="/accounts" component={AuthRouter} />
-        <PrivateRouter path="/" component={DasboardRouter} />
+        <Route path="/" component={DasboardRouter} />
         <Redirect to="/marvel" />
       </Switch>
     </Router>

@@ -1,6 +1,6 @@
 import { useCallback, useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Link, useHistory } from "react-router-dom";
+import { Link} from "react-router-dom";
 import user_img from "../assets/user_img.jpg";
 import { AuthContext } from "../context/AuthContext";
 
@@ -21,9 +21,7 @@ export const LoginPage = () => {
     password: "123456",
   });
 
-  const history = useHistory()
-
-  const {loading , login , auth} = useContext(AuthContext)
+  const {loading , login , } = useContext(AuthContext)
 
   const { email, password } = userValue;
 

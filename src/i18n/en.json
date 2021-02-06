@@ -16,5 +16,8 @@
      "publisher": "publisher:",
      "superHero": "super hero:",
      "more" : "more",
-     "back" : "back"
+     "back" : "back",
+     "search" : "Search",
+     "searchAHero": "search a hero",
+     "noHero": "no hero found with this name"
 }

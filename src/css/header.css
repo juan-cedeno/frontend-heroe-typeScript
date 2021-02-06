@@ -42,3 +42,8 @@
     text-transform: capitalize;
     cursor: pointer;
 }
+.sigIn {
+     background-color: #138b9e;
+    border: 1px solid #138b9e;
+    outline: none;
+}
