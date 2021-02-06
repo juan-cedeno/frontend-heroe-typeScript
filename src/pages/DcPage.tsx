@@ -6,9 +6,7 @@ import { HeroeContext } from "../context/HeroeContext"
 export const DcPage = () => {
 
      const {heroe} = useContext(HeroeContext)
-
-
-
+     
      return (
           <div className = 'cont-heroe'>
               {

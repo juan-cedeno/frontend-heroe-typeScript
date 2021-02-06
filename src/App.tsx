@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import './i18n'
 import { AppRouter } from './routers/AppRouter';
@@ -8,14 +8,14 @@ import { AuthProvider } from './context/AuthContext';
 
 
 function App() {
-  
+
   return (
     <div>
         <HeroeProvider>
         <AuthProvider>
           
-          <ReactNotification />
           <AppRouter/>
+          <ReactNotification />
 
         </AuthProvider>
         </HeroeProvider>

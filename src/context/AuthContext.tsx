@@ -4,8 +4,6 @@ import { User } from "../interface/User";
 import { fetchSinToken } from "../service/fetch";
 import { fetchConToken } from "../service/fetch";
 
-
-
 interface IProvider {
   children: ReactNode;
 }
@@ -26,7 +24,6 @@ interface IContext {
 }
 
 export const AuthContext = createContext<IContext>({} as IContext);
-
 export const AuthProvider = ({ children }: IProvider) => {
   
   const [auth, setAuth] = useState<IAuth>();
@@ -35,14 +32,14 @@ export const AuthProvider = ({ children }: IProvider) => {
   const login = useCallback(async (email: string, password: string) => {
     setLoading(true)
     const user =  await fetchSinToken <User> ("login", { email, password } , 'POST');
-
+    
     setLoading(false)
-
+    
     if (user.message) {
       setLoading(false)
       return notificationMessage("Error", user.message, "danger");
     }
-
+    
     if (user) {
       localStorage.setItem("token", user.token);
       setAuth({
@@ -50,7 +47,9 @@ export const AuthProvider = ({ children }: IProvider) => {
         checking: false,
         logued: true,
       });
+      
     }
+
   }, []);
 
   const register = useCallback( async (name : string , email :  string , password : string) => {
@@ -81,7 +80,7 @@ export const AuthProvider = ({ children }: IProvider) => {
         logued : false
       })
     }
-
+    
     const user = await fetchConToken<User>('renew' , {} , 'GET')
     if (user.token) {
       
@@ -98,7 +97,7 @@ export const AuthProvider = ({ children }: IProvider) => {
     }
 
   },[])
-
+  
   const logOut = useCallback(() => {
     localStorage.removeItem('token')
     setAuth({
@@ -106,7 +105,7 @@ export const AuthProvider = ({ children }: IProvider) => {
       logued : false
     })
   },[])
-
+  
   return (
     <div>
       <AuthContext.Provider
@@ -118,7 +117,7 @@ export const AuthProvider = ({ children }: IProvider) => {
           renew,
           logOut
         }}
-      >
+        >
         {children}
       </AuthContext.Provider>
     </div>

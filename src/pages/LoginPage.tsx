@@ -1,6 +1,6 @@
 import { useCallback, useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import user_img from "../assets/user_img.jpg";
 import { AuthContext } from "../context/AuthContext";
 
@@ -21,7 +21,9 @@ export const LoginPage = () => {
     password: "123456",
   });
 
-  const {loading , login} = useContext(AuthContext)
+  const history = useHistory()
+
+  const {loading , login , auth} = useContext(AuthContext)
 
   const { email, password } = userValue;
 
@@ -34,11 +36,13 @@ export const LoginPage = () => {
     });
   },[userValue]);
   
-  const handlenSubmit = useCallback ((e: React.FormEvent<HTMLFormElement>) => {
+  const handlenSubmit = useCallback (async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    login(email , password)
+    
+     login(email , password)
 
-  },[email, password , login]);
+  },[email, password , login ]);
+
   
   return (
     <div className="cont-user">

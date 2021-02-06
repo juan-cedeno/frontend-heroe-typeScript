@@ -2,7 +2,6 @@ import config from "../interface/config";
 
 
 const BASE_URL = config.urlApi;
-const token = localStorage.getItem('token') || ''
 
 
 export const fetchSinToken = async <T> (
@@ -31,25 +30,28 @@ export const fetchSinToken = async <T> (
 }
 
 export const fetchConToken = async <T> (
-     endPoint: string,
-     data: string | object,
-     method: "GET" | "POST" | "PUT" | "DELETE"
-   ): Promise<T> => {
+  endPoint: string,
+  data: string | object,
+  method: "GET" | "POST" | "PUT" | "DELETE"
+  ): Promise<T> => {
+    
+      const token = localStorage.getItem('token') || ''
+      const url = `${BASE_URL}/${endPoint}`;
    
-     const url = `${BASE_URL}/${endPoint}`;
-   
-     if (method === "GET") {
+       if (method === "GET") {
        const resp = await fetch(url , {
-            headers : {
-           'x-token' : token!
-          }
+         headers : {
+           "Content-type": "application/json",
+           'x-token' : token
+          },
+          
        });
        return await resp.json();
      } else {
        const resp = await fetch(url, {
          headers: {
            "Content-type": "application/json",
-           'x-token' : token!
+           'x-token' : token
          },
          method,
          body: JSON.stringify(data),
