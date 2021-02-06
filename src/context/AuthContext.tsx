@@ -34,7 +34,7 @@ export const AuthProvider = ({ children }: IProvider) => {
   
   const login = useCallback(async (email: string, password: string) => {
     setLoading(true)
-    const user = await fetchSinToken("login", { email, password } , 'POST');
+    const user =  await fetchSinToken <User> ("login", { email, password } , 'POST');
 
     setLoading(false)
 
@@ -55,7 +55,7 @@ export const AuthProvider = ({ children }: IProvider) => {
 
   const register = useCallback( async (name : string , email :  string , password : string) => {
     setLoading(true)
-    const user = await fetchSinToken('register' , {name , email , password} , 'POST')
+    const user = await fetchSinToken<User>('register' , {name , email , password} , 'POST')
     setLoading(false)
     
     if (user.message) {
@@ -82,7 +82,7 @@ export const AuthProvider = ({ children }: IProvider) => {
       })
     }
 
-    const user = await fetchConToken('renew' , {} , 'GET')
+    const user = await fetchConToken<User>('renew' , {} , 'GET')
     if (user.token) {
       
       setAuth({

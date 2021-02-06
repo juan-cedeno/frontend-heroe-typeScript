@@ -1,15 +1,16 @@
 import config from "../interface/config";
-import { User } from "../interface/User";
+
 
 const BASE_URL = config.urlApi;
 const token = localStorage.getItem('token') || ''
 
-export const fetchSinToken = async (
-  endPoint: string,
+
+export const fetchSinToken = async <T> (
+  endPoint: string, 
   data: string | object,
   method: "GET" | "POST" | "PUT" | "DELETE"
 
-): Promise<User> => {
+):Promise <T>  => {
 
   const url = `${BASE_URL}/${endPoint}`;
 
@@ -29,11 +30,11 @@ export const fetchSinToken = async (
   }
 }
 
-export const fetchConToken = async (
+export const fetchConToken = async <T> (
      endPoint: string,
      data: string | object,
      method: "GET" | "POST" | "PUT" | "DELETE"
-   ): Promise<User> => {
+   ): Promise<T> => {
    
      const url = `${BASE_URL}/${endPoint}`;
    
