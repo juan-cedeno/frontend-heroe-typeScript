@@ -2,38 +2,44 @@ import React, { createContext, ReactNode, useCallback, useState } from "react";
 import { notificationMessage } from "../helpers/notificationMessage";
 import { User } from "../interface/User";
 import { fetchSinToken } from "../service/fetch";
+import { fetchConToken } from "../service/fetch";
+
+
 
 interface IProvider {
   children: ReactNode;
 }
 
 interface IAuth {
-  user: User;
+  user?: User;
   checking: boolean;
   logued: boolean;
 }
 
 interface IContext {
-  login: (emal: string, password: string) => void;
+  login: (email: string, password: string) => void;
   auth: IAuth | undefined;
-  loading : boolean
+  loading : boolean,
+  register: (name : string , email : string , password :  string) => void
+  renew: () => void,
+  logOut : () => void
 }
 
 export const AuthContext = createContext<IContext>({} as IContext);
 
 export const AuthProvider = ({ children }: IProvider) => {
-
+  
   const [auth, setAuth] = useState<IAuth>();
   const [loading, setLoading] = useState<boolean>(false)
-
+  
   const login = useCallback(async (email: string, password: string) => {
     setLoading(true)
     const user = await fetchSinToken("login", { email, password } , 'POST');
-    console.log(user);
-    
+
     setLoading(false)
 
     if (user.message) {
+      setLoading(false)
       return notificationMessage("Error", user.message, "danger");
     }
 
@@ -47,6 +53,60 @@ export const AuthProvider = ({ children }: IProvider) => {
     }
   }, []);
 
+  const register = useCallback( async (name : string , email :  string , password : string) => {
+    setLoading(true)
+    const user = await fetchSinToken('register' , {name , email , password} , 'POST')
+    setLoading(false)
+    
+    if (user.message) {
+      setLoading(false)
+      return notificationMessage ('Error' , user.message , 'danger')
+    }
+
+    if (user) {
+      setAuth({
+        user,
+        checking : false,
+        logued : true 
+      })
+    }
+
+  },[])
+
+  const renew = useCallback(async () => {
+    const token = localStorage.getItem('token') || ''
+    if (!token) {
+      setAuth({
+        checking : false,
+        logued : false
+      })
+    }
+
+    const user = await fetchConToken('renew' , {} , 'GET')
+    if (user.token) {
+      
+      setAuth({
+        user,
+        checking : false,
+        logued : true
+      })
+    }else {
+      setAuth({
+        checking : false,
+        logued : false,
+      })
+    }
+
+  },[])
+
+  const logOut = useCallback(() => {
+    localStorage.removeItem('token')
+    setAuth({
+      checking : false,
+      logued : false
+    })
+  },[])
+
   return (
     <div>
       <AuthContext.Provider
@@ -54,6 +114,9 @@ export const AuthProvider = ({ children }: IProvider) => {
           login,
           auth,
           loading,
+          register,
+          renew,
+          logOut
         }}
       >
         {children}

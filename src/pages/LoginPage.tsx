@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useCallback, useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import user_img from "../assets/user_img.jpg";
@@ -27,18 +27,18 @@ export const LoginPage = () => {
 
   const disableBtn = (email.length <= 0 || password.length < 6) ?  true :  false
 
-  const handlenChangeUserValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handlenChangeUserValue = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setUserValue({
       ...userValue,
       [e.target.name]: e.target.value,
     });
-  };
+  },[userValue]);
   
-  const handlenSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handlenSubmit = useCallback ((e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     login(email , password)
 
-  };
+  },[email, password , login]);
   
   return (
     <div className="cont-user">

@@ -1,6 +1,8 @@
 
+import { useCallback, useContext } from "react"
 import { useTranslation } from "react-i18next"
 import { Link } from "react-router-dom"
+import { AuthContext } from "../context/AuthContext"
 
 
 import '../css/header.css'
@@ -8,6 +10,11 @@ import '../css/header.css'
 export const Header = () => {
 
      const {t} = useTranslation()
+     const {logOut} = useContext(AuthContext)
+
+     const handlenLogOut = useCallback(() => {
+          logOut()
+     },[logOut])
 
      return (
           <div className = 'cont-header'>
@@ -26,6 +33,7 @@ export const Header = () => {
                </div>
                     <button 
                     className = 'btn-black'
+                    onClick = {handlenLogOut}
                     >
                     {t('logOut')}</button>
           </div>

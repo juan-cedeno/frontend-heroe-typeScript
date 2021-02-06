@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useCallback, useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import joke from "../assets/joke.webp";
+import { AuthContext } from "../context/AuthContext";
 
 
 import "../css/user.css";
@@ -16,6 +17,8 @@ export const RegisterPage = () => {
   });
 
 
+  const {register , loading} = useContext(AuthContext)
+
   const handlenChangeRegister = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserValue({
       ...userValue,
@@ -25,13 +28,12 @@ export const RegisterPage = () => {
 
   const { email, password, name } = userValue;
 
-  const handlenSubmit = (e : React.FormEvent <HTMLFormElement>) => {
+  const handlenSubmit = useCallback((e : React.FormEvent <HTMLFormElement>) => {
     e.preventDefault()
+    register(name! , email , password)
 
-  }
+  },[name , email , password , register])
   
-  const loading = ''
-
   const disableBtn = (email.length < 0 || password.length < 6 || name!?.length < 0) ?  true :  false
 
   return (
