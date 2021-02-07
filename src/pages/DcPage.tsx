@@ -3,13 +3,18 @@ import { useTranslation } from "react-i18next"
 import { DcList } from "../components/DcList"
 import { Title } from "../components/Title"
 import { HeroeContext } from "../context/HeroeContext"
+import Skeletorcard from "../helpers/skeletor-card"
 
 
 export const DcPage = () => {
 
-     const {heroe} = useContext(HeroeContext)
+     const {heroe ,  loading} = useContext(HeroeContext)
      
      const {t} = useTranslation()
+
+     if (loading) {
+          return <Skeletorcard/>
+     }
 
      return (
           <div>

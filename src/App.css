@@ -15,3 +15,10 @@ body {
   color: gray !important;
   font-weight: bold !important;
 }
+.skeletor {
+  width: 100vw;
+  margin-top: 100px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}

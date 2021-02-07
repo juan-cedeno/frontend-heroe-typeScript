@@ -10,8 +10,7 @@ export const MarvelPage = () => {
 
      const {loading} = useContext(HeroeContext)
      
-     
-     if (!loading) {
+     if (loading) {
           return <Skeletorcard/>         
      }
 
