@@ -67,7 +67,7 @@ export const SearchPage = () => {
 
         {heroFilter.length === 0 && q !== "" && (
           <p className="empty-hero">
-            {t("noHero")} <span className="text">{searchText}</span>{" "}
+            {t("noHero")} <span className="text">{q}</span>{" "}
           </p>
         )}
 

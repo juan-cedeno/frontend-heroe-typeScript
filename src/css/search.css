@@ -35,7 +35,7 @@
 }
 .letter-list-search {
      margin-left: 29px;
-     width: 100%;
+     /* width: 50vw; */
 }
 .letter-list-search p {
      margin-bottom: 9px;

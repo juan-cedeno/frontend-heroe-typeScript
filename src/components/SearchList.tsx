@@ -19,7 +19,7 @@ export const SearchList = ({items}:IProps) => {
                <div className = 'letter-list-search'>
                     <p>{items.alter_ego}</p>
                     <p>{items.first_appearance}</p>
-                    <Link to = ''>{t('more')}</Link>
+                    <Link to = {`/more/${items._id}`}>{t('more')}</Link>
                </div>
           </div>
      )

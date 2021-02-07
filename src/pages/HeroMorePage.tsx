@@ -19,7 +19,6 @@ export const HeroMorePage = () => {
   useEffect(() => {
        const getHero = async (id: string) => {
             const data = await fetchConToken<Heroes>(`heroe/${id}`, {}, "GET");
-            console.log(data);
             setItems(data)
        };
        getHero(id)
