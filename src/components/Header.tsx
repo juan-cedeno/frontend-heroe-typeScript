@@ -36,10 +36,10 @@ export const Header = () => {
      return (
           <div className = {`${navBar ? 'cont-header active' : 'cont-header'}`}>
                <div className = 'social'>
-                    <a href="http://" target="_blank" rel="noopener noreferrer">
+                    <a href="https://github.com/juan-cedeno" target="_blank" rel="noopener noreferrer">
                          <i className="fab fa-github"></i>
                     </a>
-                    <a href="http://" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.linkedin.com/in/juan-cede%C3%B1o-660a47196/" target="_blank" rel="noopener noreferrer">
                          <i className="fab fa-linkedin-in"></i>
                     </a>
                </div>
