@@ -1,5 +1,6 @@
 import { useContext, useEffect } from "react";
 import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-dom";
+import { Loading } from "../components/Loading";
 import { AuthContext } from "../context/AuthContext";
 import { AuthRouter } from "./AuthRouter";
 import { DasboardRouter } from "./DasboardRouter";
@@ -15,7 +16,7 @@ export const AppRouter = () => {
   }, [renew])
   
   if (auth?.checking === undefined) {
-    return <h1>lOADING</h1>
+    return <Loading/>
   }
   return (
     <Router>
