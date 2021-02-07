@@ -4,5 +4,5 @@
 }
 
 export default {
-     urlApi : process.env.REACT_APP_URL_API
+     urlApi : process.env.REACT_APP_URL_API,
 } as Config
