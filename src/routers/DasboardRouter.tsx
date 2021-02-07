@@ -15,7 +15,7 @@ export const DasboardRouter = () => {
                     <Route exact path = '/marvel' component = {MarvelPage}></Route>
                     <Route exact path = '/dc' component = {DcPage}></Route>
                     <PrivateRouter exact path = '/more/:id' component = {HeroMorePage}></PrivateRouter>
-                    <Route exact path = '/search' component = {SearchPage}></Route>
+                    <PrivateRouter exact path = '/search' component = {SearchPage}></PrivateRouter>
                     <Redirect to = '/marvel'/>
                </Switch>
           </div>

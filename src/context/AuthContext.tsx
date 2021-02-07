@@ -63,6 +63,7 @@ export const AuthProvider = ({ children }: IProvider) => {
     }
 
     if (user) {
+      localStorage.setItem('token' , user.token)
       setAuth({
         user,
         checking : false,
@@ -83,7 +84,7 @@ export const AuthProvider = ({ children }: IProvider) => {
     
     const user = await fetchConToken<User>('renew' , {} , 'GET')
     if (user.token) {
-      
+      localStorage.setItem('token' , user.token)
       setAuth({
         user,
         checking : false,

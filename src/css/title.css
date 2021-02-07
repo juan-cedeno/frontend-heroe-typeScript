@@ -1,0 +1,17 @@
+.cont-title {
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     margin: 29px 0px;
+}
+.cont-title h3 {
+     font-size: 30px;
+    text-transform: capitalize;
+}
+.cont-title p {
+     margin: 10px 0px;
+     text-transform: capitalize;
+     font-size: 16px;
+     color: #808080eb;
+}

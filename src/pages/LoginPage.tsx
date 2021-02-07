@@ -43,7 +43,7 @@ export const LoginPage = () => {
 
   
   return (
-    <div className="cont-user">
+    <div className="cont-user animate__animated animate__fadeInLeft">
 
       <form className="form" onSubmit={handlenSubmit}>
         <h3>{t("signIn")}</h3>

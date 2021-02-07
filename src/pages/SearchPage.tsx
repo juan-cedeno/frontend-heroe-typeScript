@@ -6,6 +6,7 @@ import { HeroeContext } from "../context/HeroeContext";
 
 import '../css/search.css'
 import { SearchList } from "../components/SearchList";
+import { Title } from "../components/Title";
 
 export const SearchPage = () => {
   const { t } = useTranslation();
@@ -41,6 +42,7 @@ export const SearchPage = () => {
 
   return (
     <div>
+      <Title title = {t('searchAHero')} subTitle = {t('WhoIsYourFavoriteHero')}/>
       <div className="cont-search">
         <form onSubmit={handlenSubmit} className="form-search">
           <input
@@ -61,8 +63,7 @@ export const SearchPage = () => {
           ))}
         </div>
       </div>
-      <div>{q === "" && <p className="empty-hero">{t("searchAHero")}</p>}</div>
-
+      
       <div>
 
         {heroFilter.length === 0 && q !== "" && (

@@ -8,7 +8,8 @@ interface IProvider {
 
 interface IContext {
      heroe: Heroes[],
-     searchHero : (name : string) => Heroes[]
+     searchHero : (name : string) => Heroes[],
+     loading : boolean
 }
 
 export const HeroeContext = createContext<IContext>({} as IContext);
@@ -16,11 +17,14 @@ export const HeroeContext = createContext<IContext>({} as IContext);
 export const HeroeProvider = ({ children }: IProvider) => {
 
   const [heroe, setHeroe] = useState<Heroes[]>([]) 
+  const [loading, setLoading] = useState<boolean>(false)
 
   useEffect(() => {
     const getHeroes = async ()  => {
+      setLoading(true)
       const data = await fetchSinToken<Heroes[]>("heroe", {}, "GET");
       setHeroe(data)
+      setLoading(false)
     }
     getHeroes();
   }, []);
@@ -40,7 +44,8 @@ export const HeroeProvider = ({ children }: IProvider) => {
       <HeroeContext.Provider 
       value={{
           heroe,
-          searchHero
+          searchHero,
+          loading
       }}>
 
        {children}

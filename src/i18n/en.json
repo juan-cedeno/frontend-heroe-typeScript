@@ -19,5 +19,8 @@
      "back" : "back",
      "search" : "Search",
      "searchAHero": "search a hero",
-     "noHero": "no hero found with this name"
+     "noHero": "no hero found with this name",
+     "dcHero" : "dc hero",
+     "marvelHero" : "marvel hero",
+     "WhoIsYourFavoriteHero" : "who is your favorite hero?"
 }

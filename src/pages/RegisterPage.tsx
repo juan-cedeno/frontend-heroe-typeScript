@@ -37,12 +37,12 @@ export const RegisterPage = () => {
   const disableBtn = (email.length < 0 || password.length < 6 || name!?.length < 0) ?  true :  false
 
   return (
-    <div className="cont-user">
-
+    <div className="cont-user animate__animated animate__fadeInRight">
 
       <div>
         <img className="img-user" src={joke} alt="joker" />
       </div>
+
       <form className="form" onSubmit = {handlenSubmit}>
         <h3>{t("signUp")}</h3>
         <input
