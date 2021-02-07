@@ -1,5 +1,5 @@
 
-import { useCallback, useContext } from "react"
+import { useCallback, useContext, useState } from "react"
 import { useTranslation } from "react-i18next"
 import { Link, useHistory } from "react-router-dom"
 import { AuthContext } from "../context/AuthContext"
@@ -8,6 +8,18 @@ import { AuthContext } from "../context/AuthContext"
 import '../css/header.css'
 
 export const Header = () => {
+
+     const [navBar, setNavBar] = useState<boolean>()
+
+     const handlenNabvar = useCallback(() => {
+          if (window.scrollY >= 80) {
+               setNavBar(true)
+          }else {
+               setNavBar(false)
+          }
+     },[])
+
+     window.addEventListener('scroll' , handlenNabvar)
 
      const {t} = useTranslation()
      const history = useHistory()
@@ -22,7 +34,7 @@ export const Header = () => {
      },[history])
 
      return (
-          <div className = 'cont-header'>
+          <div className = {`${navBar ? 'cont-header active' : 'cont-header'}`}>
                <div className = 'social'>
                     <a href="http://" target="_blank" rel="noopener noreferrer">
                          <i className="fab fa-github"></i>
